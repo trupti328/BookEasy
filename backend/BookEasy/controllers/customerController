@@ -1,0 +1,31 @@
+
+const Customer = require('../models/customerModel');
+
+exports.registerCustomer = (req, res) => {
+    const { name, email, phone, password } = req.body;
+
+    Customer.create(name, email, phone, password, (err, result) => {
+        if (err) {
+            res.status(500).json({ error: 'Database error' });
+        } else {
+            res.status(201).json({ success: true, message: 'Customer registered successfully' });
+        }
+    });
+};
+
+
+exports.loginCustomer = (req, res) => {
+    const { email, password } = req.body;
+
+    Customer.getByEmail(email, (err, results) => {
+        if (err || results.length == 0) {
+            return res.status(401).json({ error: 'Invalid email and password' });
+        }
+
+        if (results[0].password === password) {
+            res.json({ success: true, message: 'Login Successful' });
+        } else {
+            res.status(401).json({ error: 'Invalid credentials' });
+        }
+    });
+};

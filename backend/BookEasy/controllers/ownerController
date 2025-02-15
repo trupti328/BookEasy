@@ -1,0 +1,29 @@
+const Owner = require('../models/ownerModel');
+
+exports.registerOwner = (req, res) => {
+    const { name, email, phone, password } = req.body;
+
+    Owner.create(name, email, phone, password, (err, result) => {
+        if (err) {
+            res.status(500).json({ error: 'Database error' });
+        } else {
+            res.status(201).json({ success: true, message: 'Owner registered successfully' });
+        }
+    });
+};
+
+exports.loginOwner = (req, res) => {
+    const { email, password } = req.body;
+
+    Owner.getByEmail(email, (err, results) => {
+        if (err || results.length === 0) {
+            return res.status(401).json({ error: 'Invalid email or password' });
+        }
+
+        if (results[0].password === password) {
+            res.json({ success: true, message: 'Login successful' });
+        } else {
+            res.status(401).json({ error: 'Invalid credentials' });
+        }
+    });
+};
