@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context=".activity.ShopDashboardActivity">
+
+    <!-- Toolbar (Top Navbar) -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:title="Owner Dashboard" />
+
+    <!-- Register Shop Button -->
+    <Button
+        android:id="@+id/btnRegisterShop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Register Your Shop"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="@color/teal"
+        android:textColor="@android:color/white" />
+
+    <!-- No Shops Message -->
+    <TextView
+        android:id="@+id/tvNoShops"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Don't have a registered shop yet? Why wait? Let's register it fast!"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:visibility="gone"
+        android:layout_marginTop="20dp"
+        android:padding="10dp" />
+
+    <!-- RecyclerView for Shops -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewShops"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:layout_marginTop="20dp" />
+
+</LinearLayout>
