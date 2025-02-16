@@ -1,0 +1,24 @@
+# Node modules
+node_modules/
+npm-debug.log*
+yarn-error.log
+
+# Logs
+logs/
+*.log
+logs/*.log
+
+# Environment files
+.env
+.env.*
+
+# Dependencies and build
+package-lock.json
+dist/
+build/
+coverage/
+
+# Ignore temporary files
+*.swp
+*.swo
+.DS_Store
